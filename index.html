@@ -21,6 +21,7 @@ html,body {
   align-items:center;
   justify-content:center;
   text-align:center;
+  flex-direction:column;
 }
 
 h1 {
@@ -30,8 +31,23 @@ h1 {
   animation:fadeIn 2.5s forwards;
 }
 
+.subtitle {
+  margin-top:18px;
+  font-size:16px;
+  letter-spacing:1px;
+  opacity:0;
+  animation:fadeIn 2.5s forwards, glowPulse 4s ease-in-out infinite;
+  color:#8ab8ff;
+  text-shadow:0 0 10px #3f7cff55;
+}
+
 @keyframes fadeIn {
   to { opacity:1; }
+}
+
+@keyframes glowPulse {
+  0%,100% { text-shadow:0 0 6px #3f7cff33; }
+  50% { text-shadow:0 0 18px #3f7cffaa; }
 }
 
 .glow {
@@ -39,18 +55,52 @@ h1 {
   width:300px;
   height:300px;
   border-radius:50%;
-  background:radial-gradient(circle,#ffffff22,transparent 70%);
+  background:radial-gradient(circle,#3f7cff22,transparent 70%);
   pointer-events:none;
   transition:transform .05s linear;
+}
+
+.footer {
+  position:fixed;
+  bottom:20px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:16px;
+  font-size:12px;
+  letter-spacing:1px;
+  opacity:.55;
+}
+
+.footer a {
+  color:#8ab8ff;
+  text-decoration:none;
+  border:1px solid #8ab8ff55;
+  padding:6px 14px;
+  border-radius:20px;
+  transition:.3s;
+}
+
+.footer a:hover {
+  background:#8ab8ff22;
+  opacity:1;
 }
 </style>
 </head>
 
 <body>
+
 <div class="glow" id="glow"></div>
 
 <div class="stage">
   <h1 id="title">Lev is building something</h1>
+  <div class="subtitle">You're here early — launching very soon.</div>
+</div>
+
+<div class="footer">
+  <span>Lev Alexander Limited © 2026</span>
+  <a href="mailto:lev@lev-alexander.com">Contact</a>
 </div>
 
 <script>
@@ -59,5 +109,6 @@ document.addEventListener("mousemove", e=>{
   glow.style.transform = `translate(${e.clientX-150}px,${e.clientY-150}px)`
 })
 </script>
+
 </body>
 </html>

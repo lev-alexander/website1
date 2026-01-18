@@ -1,352 +1,450 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Lev Alexander Limited — Strategic Brand & Digital Consultancy</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lev Alexander Limited — Strategic Brand & Digital Consultancy</title>
+  <meta name="description" content="Lev Alexander Limited is a UK-registered company providing brand strategy, digital consultancy, and marketing input to startups and creative organisations." />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:opsz,wght@14..32,400,500,600&family=Knewave&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <!-- Header font (as provided) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
 
-<style>
-:root {
-  color-scheme: dark;
-  --bg: #0c0d0f;
-  --text: #f5f2ee;
-  --muted: #c6c2ba;
-  --accent: #e4c7a2;
-  --surface: rgba(255,255,255,0.04);
-  --shadow: rgba(0,0,0,0.25);
-}
+  <!-- Neutral credits font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:opsz,wght@14..32,400,500,600&display=swap" rel="stylesheet">
 
-* { box-sizing: border-box; }
+  <style>
+    :root{
+      --ink:#f3f1ec;
+      --ink2:rgba(243,241,236,.78);
+      --ink3:rgba(243,241,236,.58);
+      --paper:#07090c;
+      --accent:#e4c7a2;
+      --hair:rgba(243,241,236,.18);
+      --hair2:rgba(243,241,236,.10);
+      --shadow:rgba(0,0,0,.55);
+      --max: 1100px;
+      --pad: clamp(18px, 4vw, 56px);
+      color-scheme: dark;
+    }
 
-html { scroll-behavior: smooth; }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:"Instrument Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.55;
+      letter-spacing:.01em;
+      overflow-x:hidden;
+    }
 
-body {
-  margin: 0;
-  font-family: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  letter-spacing: 0.01em;
-  overflow-x: hidden;
-}
+    /* Film-grain texture (subtle, always-on) */
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      z-index:10;
+      opacity:.16;
+      mix-blend-mode:soft-light;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+    }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");
-  mix-blend-mode: soft-light;
-  pointer-events: none;
-  z-index: 3;
-}
+    /* Skip link (accessibility) */
+    .skip{
+      position:absolute; left:-999px; top:12px;
+      background:var(--ink);
+      color:#000;
+      padding:10px 12px;
+      border-radius:8px;
+      font-weight:600;
+      z-index:9999;
+    }
+    .skip:focus{left:12px}
 
-main { position: relative; z-index: 1; }
+    /* Poster frame */
+    .poster{
+      min-height:100svh;
+      position:relative;
+      isolation:isolate;
+    }
 
-section { padding: 100px 8vw; }
+    /* Full-bleed image (no blur, no card UI) */
+    .poster::before{
+      content:"";
+      position:absolute; inset:0;
+      z-index:-2;
+      background-image:url("https://plus.unsplash.com/premium_photo-1723489222483-9fdb1f922a27?q=80&w=1740&auto=format&fit=crop");
+      background-size:cover;
+      background-position:center;
+      transform:scale(1.02);
+      filter:contrast(1.06) saturate(.92) brightness(.72);
+    }
 
-.hero {
-  min-height: 90vh;
-  display: grid;
-  align-items: center;
-  padding-top: 140px;
-  position: relative;
-  overflow: hidden;
-  --hero-shift: 0%;
-  --hero-scale: 1.02;
-}
+    /* Ink wash for legibility (poster-style, not UI gradient) */
+    .poster::after{
+      content:"";
+      position:absolute; inset:0;
+      z-index:-1;
+      background:
+        radial-gradient(1200px 700px at 70% 30%, rgba(0,0,0,.20), rgba(0,0,0,.72) 55%, rgba(0,0,0,.92) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.80));
+      pointer-events:none;
+    }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("https://plus.unsplash.com/premium_photo-1723489222483-9fdb1f922a27?q=80&w=1740&auto=format&fit=crop");
-  background-size: cover;
-  background-position: center;
-  filter: saturate(0.8) contrast(1.05) brightness(0.7);
-  transform: translateY(var(--hero-shift)) scale(var(--hero-scale));
-  will-change: transform;
-}
+    /* Subtle “print edge” */
+    .frame{
+      position:absolute; inset:14px;
+      border:1px solid var(--hair2);
+      border-radius:16px;
+      pointer-events:none;
+      z-index:2;
+    }
+    .frame::before{
+      content:"";
+      position:absolute; inset:8px;
+      border:1px solid var(--hair);
+      border-radius:12px;
+      opacity:.55;
+    }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(12,13,15,0.65) 0%,
-    rgba(12,13,15,0.9) 60%,
-    rgba(12,13,15,1) 100%
-  );
-}
+    /* Top micro-strip: boilerplate + marks + barcode */
+    .top-strip{
+      position:sticky;
+      top:0;
+      z-index:5;
+      padding: 14px var(--pad) 10px;
+      background: linear-gradient(180deg, rgba(7,9,12,.78), rgba(7,9,12,.10));
+      backdrop-filter: blur(0px);
+    }
+    .top-strip-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      gap:16px;
+      justify-content:space-between;
+      border-bottom:1px solid var(--hair2);
+      padding-bottom:10px;
+    }
 
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 720px;
-}
+    .micro{
+      font-size:.70rem;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--ink2);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width: 68vw;
+    }
 
-.poster-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  color: var(--muted);
-  margin-bottom: 22px;
-  text-transform: uppercase;
-}
+    .marks{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex:0 0 auto;
+    }
 
-.barcode {
-  width: 90px;
-  height: 18px;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(245,242,238,0.7),
-    rgba(245,242,238,0.7) 2px,
-    transparent 2px,
-    transparent 4px
-  );
-  opacity: 0.7;
-}
+    .mark{
+      width:26px; height:26px;
+      border:1px solid var(--hair);
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      font-size:.72rem;
+      color:var(--ink2);
+      line-height:1;
+      background:rgba(255,255,255,.03);
+    }
 
-.poster-headline {
-  font-family: "Knewave", cursive;
-  font-size: clamp(3.2rem, 7vw, 5.2rem);
-  letter-spacing: 0.04em;
-  line-height: 1;
-  text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(6px);
-  animation: rise 1.1s ease forwards;
-}
+    .barcode{
+      width:108px;
+      height:18px;
+      border:1px solid var(--hair2);
+      border-radius:4px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(243,241,236,.85),
+          rgba(243,241,236,.85) 2px,
+          transparent 2px,
+          transparent 4px
+        );
+      opacity:.75;
+    }
 
-.subhead {
-  font-size: 1.1rem;
-  color: var(--muted);
-  max-width: 600px;
-  margin-top: 22px;
-}
+    /* Main poster layout */
+    .layout{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: clamp(26px, 6vw, 74px) var(--pad) 76px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: clamp(18px, 4vw, 56px);
+      align-items:end;
+      min-height: calc(100svh - 72px);
+    }
 
-h2 {
-  font-family: "Shadows Into Light", cursive;
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin-bottom: 24px;
-  letter-spacing: 0.03em;
-}
+    /* Title block (the “weapon” font) */
+    .title{
+      margin:0;
+      font-family:"Knewave", system-ui, sans-serif;
+      text-transform:uppercase;
+      font-size: clamp(3.2rem, 8vw, 6.3rem);
+      letter-spacing: .06em;
+      line-height: .93;
+      text-shadow: 0 18px 70px var(--shadow);
+      max-width: 18ch;
+    }
 
-.card {
-  background: var(--surface);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 24px;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px var(--shadow);
-  max-width: 660px;
-}
+    /* Small pull line (kept as your copy, untouched) */
+    .tag{
+      margin: 18px 0 0;
+      font-size: clamp(1.02rem, 1.2vw, 1.18rem);
+      color: var(--ink2);
+      max-width: 62ch;
+    }
 
-.services-list {
-  list-style: none;
-  padding: 0;
-  margin: 28px 0 0;
-  display: grid;
-  gap: 16px;
-}
+    /* Right column: “credit block” vibe (no card, no shadow boxes) */
+    .credit-block{
+      border-left: 1px solid var(--hair2);
+      padding-left: clamp(14px, 2.6vw, 28px);
+      padding-bottom: 6px;
+    }
 
-.services-list li {
-  padding: 12px 16px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.02);
-  position: relative;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s ease;
-}
+    .credit-head{
+      margin:0 0 12px;
+      font-size:.72rem;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:var(--ink2);
+    }
 
-.services-list li::after {
-  content: "";
-  position: absolute;
-  left: 16px;
-  bottom: 10px;
-  height: 1px;
-  width: calc(100% - 32px);
-  background: rgba(228,199,162,0.5);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-}
+    .credit-lines{
+      display:grid;
+      gap:10px;
+      font-size:.98rem;
+      color:var(--ink);
+    }
 
-.services-list li:hover {
-  background: rgba(228,199,162,0.08);
-}
+    .credit-lines .muted{ color: var(--ink3); }
 
-.services-list li:hover::after { transform: scaleX(1); }
+    a{
+      color:var(--ink);
+      text-decoration:none;
+      border-bottom:1px solid rgba(243,241,236,.25);
+    }
+    a:hover{
+      color:var(--accent);
+      border-bottom-color: rgba(228,199,162,.65);
+    }
+    a:focus-visible{
+      outline:2px solid var(--accent);
+      outline-offset: 4px;
+      border-bottom-color: transparent;
+    }
 
-.services-list li.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    /* Down-page “credits sheet” sections */
+    .sheet{
+      background: var(--paper);
+      position:relative;
+      z-index:1;
+    }
 
-.contact-grid {
-  display: grid;
-  gap: 18px;
-  font-size: 1.05rem;
-}
+    .sheet-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 84px var(--pad);
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(18px, 4vw, 56px);
+      border-top:1px solid var(--hair2);
+    }
 
-.contact-grid a {
-  color: var(--text);
-  text-decoration: none;
-  position: relative;
-}
+    .sheet h2{
+      margin:0 0 18px;
+      font-size:.78rem;
+      letter-spacing:.30em;
+      text-transform:uppercase;
+      color:var(--ink2);
+    }
 
-.contact-grid a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 1px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-}
+    .body-copy{
+      color:var(--ink);
+      font-size: 1.02rem;
+      max-width: 70ch;
+    }
+    .body-copy p{margin:0 0 14px}
+    .body-copy p:last-child{margin-bottom:0}
 
-.contact-grid a:hover::after { transform: scaleX(1); }
+    /* “Services” as straight text list (no pills, no scam UI) */
+    .list{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap: 10px;
+      color: var(--ink);
+      font-size: 1.02rem;
+    }
+    .list li{
+      padding: 10px 0;
+      border-bottom: 1px solid var(--hair2);
+    }
 
-.footer {
-  padding: 48px 8vw 60px;
-  font-size: 0.9rem;
-  color: var(--muted);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+    /* Bottom legal footer (poster credits vibe) */
+    footer{
+      border-top:1px solid var(--hair2);
+      padding: 26px var(--pad) 40px;
+      background: var(--paper);
+      color: var(--ink3);
+      font-size: .82rem;
+      letter-spacing: .08em;
+    }
+    .footer-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px 18px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .footer-inner span{white-space:nowrap}
 
-.footer a {
-  color: var(--text);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-}
+    /* Motion: almost none (poster stares at you) */
+    @media (prefers-reduced-motion: no-preference){
+      .poster::before{
+        transform: scale(1.03);
+        animation: slowDrift 16s ease-in-out infinite alternate;
+      }
+      @keyframes slowDrift{
+        from{ transform: scale(1.03) translateY(0px); }
+        to{ transform: scale(1.06) translateY(10px); }
+      }
+    }
 
-.footer a:hover {
-  color: var(--accent);
-  letter-spacing: 0.05em;
-}
-
-.reveal { opacity: 0; transform: translateY(8px); transition: all 0.8s ease; }
-.reveal.is-visible { opacity: 1; transform: none; }
-
-@keyframes rise {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
-}
-
-@media (max-width: 720px) {
-  section { padding: 80px 8vw; }
-}
-</style>
+    /* Responsive */
+    @media (max-width: 920px){
+      .layout{ grid-template-columns: 1fr; align-items:start; padding-bottom: 56px; }
+      .credit-block{ border-left: none; padding-left: 0; border-top:1px solid var(--hair2); padding-top:18px; }
+      .title{ max-width: 22ch; }
+      .micro{ max-width: 62vw; }
+      .sheet-inner{ grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
-<main>
+<a class="skip" href="#content">Skip to content</a>
 
-<section class="hero">
-  <div class="hero-content">
-    <div class="poster-meta">
-      <span>© 2026 Lev Alexander Limited</span>
-      <span>UK Registered · Co. 14816976</span>
-      <span class="barcode"></span>
+<main class="poster">
+  <div class="frame" aria-hidden="true"></div>
+
+  <!-- Top boilerplate strip -->
+  <div class="top-strip" aria-label="Poster boilerplate">
+    <div class="top-strip-inner">
+      <div class="micro">
+        © 2026 LEV ALEXANDER LIMITED &nbsp;&nbsp; UK REGISTERED · CO. 14816976
+      </div>
+      <div class="marks" aria-hidden="true">
+        <div class="mark">©</div>
+        <div class="mark">®</div>
+        <div class="barcode"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Poster face -->
+  <section class="layout" id="content" aria-label="Lev Alexander Limited poster">
+    <div>
+      <!-- Copy unchanged -->
+      <h1 class="title">THINK, MAKE, GOOD!</h1>
+      <p class="tag">
+        Providing brand strategy, digital consultancy, and marketing input to startups and creative organisations.
+      </p>
     </div>
 
-    <h1 class="poster-headline">THINK, MAKE, GOOD!</h1>
-
-    <p class="subhead">
-      Providing brand strategy, digital consultancy, and marketing input to startups and creative organisations.
-    </p>
-  </div>
-</section>
-
-<section class="reveal">
-  <h2>About Lev Alexander Limited</h2>
-  <div class="card">
-    <p>
-      Lev Alexander Limited is a UK-registered company working with brands and organisations on strategy,
-      digital product thinking, and marketing direction, and research & innovation.
-    </p>
-    <p>
-      The company supports teams in shaping positioning, defining product narratives,
-      and planning marketing activity across digital channels.
-    </p>
-    <p>Registered in the United Kingdom.</p>
-    <p>Company number: 14816976</p>
-  </div>
-</section>
-
-<section class="reveal">
-  <h2>Services</h2>
-  <ul class="services-list">
-    <li>Brand strategy and positioning</li>
-    <li>Digital product consultancy</li>
-    <li>Marketing planning and activation</li>
-    <li>Creative campaign development</li>
-  </ul>
-</section>
-
-<section class="reveal">
-  <h2>Contact</h2>
-  <div class="contact-grid card">
-    <div>Email: <a href="mailto:lev@lev-alexander.com">lev@lev-alexander.com</a></div>
-    <div>Location: London, United Kingdom</div>
-  </div>
-</section>
-
+    <aside class="credit-block" aria-label="Key verification details">
+      <p class="credit-head">Verification</p>
+      <div class="credit-lines">
+        <div><span class="muted">Organisation:</span> Lev Alexander Limited</div>
+        <div><span class="muted">Registered:</span> United Kingdom</div>
+        <div><span class="muted">Company No.:</span> 14816976</div>
+        <div><span class="muted">Location:</span> London, United Kingdom</div>
+        <div><span class="muted">Email:</span> <a href="mailto:lev@lev-alexander.com">lev@lev-alexander.com</a></div>
+      </div>
+    </aside>
+  </section>
 </main>
 
-<footer class="footer">
-  <span>© 2026 Lev Alexander Limited</span>
-  <span>Registered in the United Kingdom · Company No. 14816976</span>
-  <a href="/privacy">Privacy Policy</a>
+<!-- Down-page “credits sheet” (still the same copy, just better art direction) -->
+<section class="sheet" id="about">
+  <div class="sheet-inner">
+    <div>
+      <h2>About</h2>
+      <div class="body-copy">
+        <p>
+          Lev Alexander Limited is a UK-registered company working with brands and organisations on strategy, digital product thinking, and marketing direction, and research &amp; innovation.
+        </p>
+        <p>
+          The company supports teams in shaping positioning, defining product narratives, and planning marketing activity across digital channels.
+        </p>
+        <p>Registered in the United Kingdom.</p>
+        <p>Company number: 14816976</p>
+      </div>
+    </div>
+
+    <div>
+      <h2>Services</h2>
+      <ul class="list" aria-label="Services list">
+        <li>Brand strategy and positioning</li>
+        <li>Digital product consultancy</li>
+        <li>Marketing planning and activation</li>
+        <li>Creative campaign development</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sheet" id="contact">
+  <div class="sheet-inner">
+    <div>
+      <h2>Contact</h2>
+      <div class="body-copy">
+        <p><span style="color:var(--ink2); letter-spacing:.22em; text-transform:uppercase; font-size:.78rem;">Email</span><br>
+          <a href="mailto:lev@lev-alexander.com">lev@lev-alexander.com</a>
+        </p>
+        <p><span style="color:var(--ink2); letter-spacing:.22em; text-transform:uppercase; font-size:.78rem;">Location</span><br>
+          London, United Kingdom
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <h2>Privacy</h2>
+      <div class="body-copy">
+        <p><a href="/privacy">Privacy Policy</a></p>
+        <p class="muted" style="color:var(--ink3);">
+          This page exists to provide clear organisational information and contact details.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Lev Alexander Limited</span>
+    <span>Registered in the United Kingdom · Company No. 14816976</span>
+    <span><a href="/privacy">Privacy Policy</a></span>
+  </div>
 </footer>
-
-<script>
-const revealEls = document.querySelectorAll(".reveal");
-const serviceItems = document.querySelectorAll(".services-list li");
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("is-visible");
-      if (entry.target.querySelector(".services-list")) {
-        serviceItems.forEach((li, i) => {
-          li.style.transitionDelay = `${i * 0.15}s`;
-          li.classList.add("is-visible");
-        });
-      }
-    }
-  });
-}, { threshold: 0.2 });
-
-revealEls.forEach(el => observer.observe(el));
-
-const hero = document.querySelector(".hero");
-const handleParallax = () => {
-  const rect = hero.getBoundingClientRect();
-  const h = window.innerHeight;
-  if (rect.bottom <= 0 || rect.top >= h) return;
-  const p = (h - rect.top) / (h + rect.height);
-  hero.style.setProperty("--hero-shift", `${(p - 0.5) * 6}%`);
-};
-
-window.addEventListener("scroll", () => requestAnimationFrame(handleParallax));
-handleParallax();
-</script>
 
 </body>
 </html>

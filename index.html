@@ -67,7 +67,7 @@ body {
   font-size: 0.6em;
   vertical-align: super;
   margin: 0 2px;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 /* ==================== HEADER SECTION ==================== */
@@ -127,7 +127,7 @@ body {
   letter-spacing: 1px;
   line-height: 1.4;
   max-width: 120px;
-  opacity: 0.9;
+  opacity: 1;
   color: #FFFFFF;
   z-index: 2;
 }
@@ -152,10 +152,14 @@ body {
   border-bottom: 1px solid #000;
 }
 
-.thin-bar .marquee-content {
+.thin-bar-text {
   color: #FFFFFF;
   font-size: clamp(10px, 2vw, 14px);
   font-weight: 500;
+  text-align: center;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .marquee-wrapper {
@@ -187,7 +191,7 @@ body {
 
 .separator {
   margin: 0 20px;
-  opacity: 0.6;
+  opacity: 1;
 }
 
 @keyframes scroll {
@@ -225,7 +229,7 @@ body {
 .footnote {
   font-size: 0.5em;
   vertical-align: super;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 /* ==================== OUTLINE SECTION ==================== */
@@ -274,7 +278,7 @@ body {
   border-top: 2px solid #000;
   border-bottom: 2px solid #000;
   padding: 30px 0;
-  margin: 80px 0;
+  margin: 0 0 80px 0;
 }
 
 /* ==================== FOOTER ==================== */
@@ -311,7 +315,7 @@ body {
   font-size: 10px;
   line-height: 1.6;
   max-width: 300px;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .contact-link {
@@ -325,7 +329,7 @@ body {
 }
 
 .contact-link:hover {
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .copyright {
@@ -333,7 +337,7 @@ body {
   font-size: 10px;
   margin-top: 40px;
   text-align: center;
-  opacity: 0.6;
+  opacity: 1;
 }
 
 /* ==================== BARCODE SVG ==================== */
@@ -345,7 +349,24 @@ body {
 
 .barcode {
   height: 60px;
-  opacity: 0.9;
+  opacity: 1;
+}
+
+.top-barcode-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #000000;
+  padding: 10px 20px;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.top-barcode-section .barcode-container {
+  gap: 10px;
 }
 
 /* ==================== HORIZONTAL RULES ==================== */
@@ -354,12 +375,12 @@ body {
   height: 1px;
   background: #000;
   margin: 60px 0;
-  opacity: 0.3;
+  opacity: 1;
 }
 
 .divider-thick {
   height: 3px;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 /* ==================== ANIMATIONS ==================== */
@@ -421,6 +442,71 @@ body {
 
 <body>
 
+<!-- ==================== TOP BARCODE SECTION ==================== -->
+<div class="top-barcode-section">
+  <div class="barcode-container">
+    <!-- Barcode SVG 1 (Inverted) -->
+    <svg class="barcode" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="6" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="9" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="14" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="17" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="21" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="24" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="30" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="34" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="37" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="42" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="46" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="49" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="53" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="59" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="62" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="67" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="71" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="74" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="80" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="84" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="87" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="92" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="95" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="99" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="105" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="108" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="113" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="117" y="0" width="1" height="60" fill="#FFF"/>
+      <text x="60" y="58" font-family="JetBrains Mono, monospace" font-size="6" text-anchor="middle" fill="#FFF">14816976</text>
+    </svg>
+
+    <!-- Barcode SVG 2 (Inverted) -->
+    <svg class="barcode" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="10" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="13" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="17" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="23" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="26" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="31" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="35" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="38" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="44" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="48" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="51" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="56" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="59" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="63" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="69" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="72" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="77" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="81" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="84" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="90" y="0" width="2" height="60" fill="#FFF"/>
+      <text x="50" y="58" font-family="JetBrains Mono, monospace" font-size="6" text-anchor="middle" fill="#FFF">LEV-2026</text>
+    </svg>
+  </div>
+</div>
+
 <!-- ==================== HEADER ==================== -->
 <section class="header">
   <!-- Video Background -->
@@ -437,13 +523,13 @@ body {
     <div class="corner-text corner-top-left">
       Est. 2014<br>
       London, UK<span class="symbol">©</span><br>
-      <span style="opacity: 0.6;">REG.№ 001</span>
+      <span style="opacity: 1;">REG.№ 001</span>
     </div>
 
     <div class="corner-text corner-top-right">
       Brand Strategy<br>
       Product Innovation<span class="symbol">™</span><br>
-      <span style="opacity: 0.6;">SPEC.№ 042</span>
+      <span style="opacity: 1;">SPEC.№ 042</span>
     </div>
 
     <h1 class="display-heavy hero-title">
@@ -455,14 +541,7 @@ body {
 
 <!-- ==================== CLIENTS & PARTNERS THIN BAR ==================== -->
 <div class="thin-bar">
-  <div class="marquee">
-    <div class="marquee-content">
-      CLIENTS & PARTNERS<span class="separator">•</span>CLIENTS & PARTNERS<span class="separator">•</span>CLIENTS & PARTNERS<span class="separator">•</span>CLIENTS & PARTNERS<span class="separator">•</span>CLIENTS & PARTNERS<span class="separator">•</span>CLIENTS & PARTNERS<span class="separator">•</span>CLIENTS & PARTNERS<span class="separator">•</span>CLIENTS & PARTNERS<span class="separator">•</span>
-    </div>
-    <div class="marquee-content" aria-hidden="true">
-      CLIENTS & PARTNERS<span class="separator">•</span>CLIENTS & PARTNERS<span class="separator">•</span>CLIENTS & PARTNERS<span class="separator">•</span>CLIENTS & PARTNERS<span class="separator">•</span>CLIENTS & PARTNERS<span class="separator">•</span>CLIENTS & PARTNERS<span class="separator">•</span>CLIENTS & PARTNERS<span class="separator">•</span>CLIENTS & PARTNERS<span class="separator">•</span>
-    </div>
-  </div>
+  <div class="thin-bar-text">CLIENTS & PARTNERS</div>
 </div>
 
 <!-- ==================== CLIENTS MARQUEE ==================== -->
@@ -494,14 +573,7 @@ body {
 
 <!-- ==================== SERVICES THIN BAR ==================== -->
 <div class="thin-bar">
-  <div class="marquee marquee-fast">
-    <div class="marquee-content">
-      SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>
-    </div>
-    <div class="marquee-content" aria-hidden="true">
-      SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>SERVICES<span class="separator">•</span>
-    </div>
-  </div>
+  <div class="thin-bar-text">SERVICES</div>
 </div>
 
 <!-- ==================== SERVICES MARQUEE ==================== -->

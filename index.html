@@ -2,113 +2,754 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Lev</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lev Alexander © — Makin' Magic™</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&family=Fraunces:ital,opsz,wght@0,9..144,900;1,9..144,900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-html,body {
-  margin:0;
-  height:100%;
-  background:#000;
-  color:#fff;
-  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-  overflow:hidden;
+/* ==================== RESET & BASE ==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.stage {
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  flex-direction:column;
+html {
+  cursor: crosshair;
 }
 
-h1 {
-  font-size:56px;
-  letter-spacing:-1px;
-  opacity:0;
-  animation:fadeIn 2.5s forwards;
+body {
+  background: #FFFFFF;
+  color: #000000;
+  font-family: 'Playfair Display', serif;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-.subtitle {
-  margin-top:18px;
-  font-size:16px;
-  letter-spacing:1px;
-  opacity:0;
-  animation:fadeIn 2.5s forwards, glowPulse 4s ease-in-out infinite;
-  color:#fff;
-  text-shadow:0 0 10px #3f7cff55;
+/* ==================== TYPOGRAPHY ==================== */
+.display-heavy {
+  font-family: 'Rubik Bubbles', cursive;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
 }
 
-@keyframes fadeIn {
-  to { opacity:1; }
+.display-outline {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  -webkit-text-stroke: 2px #000000;
+  -webkit-text-fill-color: transparent;
+  text-stroke: 2px #000000;
+  text-fill-color: transparent;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
 }
 
-@keyframes glowPulse {
-  0%,100% { text-shadow:0 0 6px #3f7cff33; }
-  50% { text-shadow:0 0 18px #3f7cffaa; }
+.serif-body {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
 }
 
-.glow {
-  position:absolute;
-  width:300px;
-  height:300px;
-  border-radius:50%;
-  background:radial-gradient(circle,#3f7cff22,transparent 70%);
-  pointer-events:none;
-  transition:transform .05s linear;
+.mono-small {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
+/* ==================== DECORATIVE SYMBOLS ==================== */
+.symbol {
+  font-size: 0.6em;
+  vertical-align: super;
+  margin: 0 2px;
+  opacity: 1;
+}
+
+/* ==================== HEADER SECTION ==================== */
+.header {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+  background: #000000;
+}
+
+.video-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  object-fit: cover;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: clamp(64px, 15vw, 220px);
+  margin: 0;
+  animation: fadeIn 1.2s ease-out;
+  color: #FFFFFF;
+}
+
+/* Corner decorations */
+.corner-text {
+  position: absolute;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  max-width: 120px;
+  opacity: 1;
+  color: #FFFFFF;
+  z-index: 2;
+}
+
+.corner-top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.corner-top-right {
+  top: 20px;
+  right: 20px;
+  text-align: right;
+}
+
+/* ==================== MARQUEE SECTIONS ==================== */
+.thin-bar {
+  width: 100%;
+  overflow: hidden;
+  background: #000000;
+  padding: 5px 0;
+  border-bottom: 1px solid #000;
+}
+
+.thin-bar-text {
+  color: #FFFFFF;
+  font-size: clamp(10px, 2vw, 14px);
+  font-weight: 500;
+  text-align: center;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 24px 0;
+  background: #FFFFFF;
+}
+
+.marquee {
+  display: flex;
+  white-space: nowrap;
+  width: max-content;
+  will-change: transform;
+  animation: scroll var(--scroll-duration, 16s) linear infinite;
+}
+
+.marquee-fast {
+  animation: scroll var(--scroll-duration, 12s) linear infinite;
+}
+
+.marquee-content {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 4vw, 48px);
+  padding: 0 40px;
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
+.separator {
+  margin: 0 20px;
+  opacity: 1;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-1 * var(--scroll-distance, 50%)));
+  }
+}
+
+/* ==================== BODY SECTION ==================== */
+.body-section {
+  max-width: 600px;
+  margin: 120px auto;
+  padding: 0 40px;
+  text-align: center;
+}
+
+.body-text {
+  font-size: clamp(18px, 2.5vw, 28px);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.footnote {
+  font-size: 0.5em;
+  vertical-align: super;
+  opacity: 1;
+}
+
+/* ==================== OUTLINE SECTION ==================== */
+.outline-section {
+  text-align: center;
+  padding: 100px 20px;
+  position: relative;
+}
+
+.outline-title {
+  font-size: clamp(72px, 18vw, 280px);
+  margin: 0;
+}
+
+/* ==================== FLASHING SYMBOLS ==================== */
+.flash-symbol {
+  position: absolute;
+  font-size: clamp(24px, 4vw, 48px);
+  opacity: 0;
+  pointer-events: none;
+  animation: flash 1s ease-in-out;
+  color: #000000;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* ==================== SERVICES MARQUEE ==================== */
+.services-marquee {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  padding: 30px 0;
+  margin: 0 0 80px 0;
+}
+
+/* ==================== FOOTER ==================== */
 .footer {
-  position:fixed;
-  bottom:20px;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:16px;
-  font-size:12px;
-  letter-spacing:1px;
-  opacity:1;
+  padding: 60px 40px 40px;
+  position: relative;
+  border-top: 1px solid #000;
 }
 
-.footer a {
-  color:#fff;
-  text-decoration:none;
-  border:1px solid #fff;
-  padding:6px 14px;
-  border-radius:20px;
-  transition:.3s;
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: start;
 }
 
-.footer a:hover {
-  background:#fff;
-  color:#000;
-  opacity:1;
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.legal-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  line-height: 1.6;
+  max-width: 300px;
+  opacity: 1;
+}
+
+.contact-link {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: #000;
+  text-decoration: none;
+  border-bottom: 2px solid #000;
+  padding-bottom: 2px;
+  transition: opacity 0.3s;
+}
+
+.contact-link:hover {
+  opacity: 1;
+}
+
+.copyright {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  margin-top: 40px;
+  text-align: center;
+  opacity: 1;
+}
+
+/* ==================== BARCODE SVG ==================== */
+.barcode-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.barcode {
+  height: 60px;
+  opacity: 1;
+}
+
+.top-barcode-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #000000;
+  padding: 10px 20px;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.top-barcode-section .barcode-container {
+  gap: 10px;
+}
+
+/* ==================== HORIZONTAL RULES ==================== */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #000;
+  margin: 60px 0;
+  opacity: 1;
+}
+
+.divider-thick {
+  height: 3px;
+  opacity: 1;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(48px, 12vw, 120px);
+  }
+
+  .outline-title {
+    font-size: clamp(56px, 14vw, 160px);
+  }
+
+  .body-section {
+    margin: 80px auto;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-right {
+    align-items: flex-start;
+  }
+
+  .corner-text {
+    font-size: 7px;
+    max-width: 100px;
+  }
+
+  .marquee-content {
+    font-size: clamp(16px, 3vw, 32px);
+  }
+}
+
+@media (max-width: 480px) {
+  .corner-text {
+    display: none;
+  }
+
+  .body-section {
+    padding: 0 24px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="glow" id="glow"></div>
+<!-- ==================== TOP BARCODE SECTION ==================== -->
+<div class="top-barcode-section">
+  <div class="barcode-container">
+    <!-- Barcode SVG 1 (Inverted) -->
+    <svg class="barcode" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="6" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="9" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="14" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="17" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="21" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="24" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="30" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="34" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="37" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="42" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="46" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="49" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="53" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="59" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="62" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="67" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="71" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="74" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="80" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="84" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="87" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="92" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="95" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="99" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="105" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="108" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="113" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="117" y="0" width="1" height="60" fill="#FFF"/>
+      <text x="60" y="58" font-family="JetBrains Mono, monospace" font-size="6" text-anchor="middle" fill="#FFF">14816976</text>
+    </svg>
 
-<div class="stage">
-  <h1 id="title">Lev is building something</h1>
-  <div class="subtitle">You're here early — launching very soon.</div>
+    <!-- Barcode SVG 2 (Inverted) -->
+    <svg class="barcode" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="10" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="13" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="17" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="23" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="26" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="31" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="35" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="38" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="44" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="48" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="51" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="56" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="59" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="63" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="69" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="72" y="0" width="3" height="60" fill="#FFF"/>
+      <rect x="77" y="0" width="2" height="60" fill="#FFF"/>
+      <rect x="81" y="0" width="1" height="60" fill="#FFF"/>
+      <rect x="84" y="0" width="4" height="60" fill="#FFF"/>
+      <rect x="90" y="0" width="2" height="60" fill="#FFF"/>
+      <text x="50" y="58" font-family="JetBrains Mono, monospace" font-size="6" text-anchor="middle" fill="#FFF">LEV-2026</text>
+    </svg>
+  </div>
 </div>
 
-<div class="footer">
-  <span>Lev Alexander Limited © 2026</span>
-  <a href="mailto:lev@lev-alexander.com">Contact</a>
+<!-- ==================== HEADER ==================== -->
+<section class="header">
+  <!-- Video Background -->
+  <video class="video-background" autoplay muted loop playsinline poster="https://asset.eyecannndy.com/media/clip/2024/01/30/261706589437.webp">
+    <source src="https://asset.eyecannndy.com/media/clip/2024/01/30/261706589437.mp4" type="video/mp4">
+    <source src="https://asset.eyecannndy.com/media/clip/2024/01/30/261706589437.webm" type="video/webm">
+  </video>
+
+  <!-- Optional overlay for better text contrast -->
+  <div class="video-overlay"></div>
+
+  <!-- Header Content -->
+  <div class="header-content">
+    <div class="corner-text corner-top-left">
+      Est. 2014<br>
+      London, UK<span class="symbol">©</span><br>
+      <span style="opacity: 1;">REG.№ 001</span>
+    </div>
+
+    <div class="corner-text corner-top-right">
+      Brand Strategy<br>
+      Product Innovation<span class="symbol">™</span><br>
+      <span style="opacity: 1;">SPEC.№ 042</span>
+    </div>
+
+    <h1 class="display-heavy hero-title">
+      MAKIN'<br>
+      MAGIC<span class="symbol">©</span><span class="symbol">™</span>
+    </h1>
+  </div>
+</section>
+
+<!-- ==================== CLIENTS & PARTNERS THIN BAR ==================== -->
+<div class="thin-bar">
+  <div class="thin-bar-text">CLIENTS & PARTNERS</div>
 </div>
+
+<!-- ==================== CLIENTS MARQUEE ==================== -->
+<div class="marquee-wrapper">
+  <div class="marquee" data-speed="150">
+    <div class="marquee-content">
+      PERNOD RICARD<span class="separator">•</span>CHIVAS REGAL<span class="separator">©</span>HEINEKEN<span class="separator">•</span>ASTON MARTIN<span class="separator">™</span>UNIVERSAL STUDIOS<span class="separator">•</span>FAST & FURIOUS<span class="separator">®</span>IMPERIAL BRANDS<span class="separator">•</span>BLU<span class="separator">©</span>ZYN<span class="separator">•</span>SUBWAY<span class="separator">™</span>SKY SPORTS<span class="separator">®</span>SONY<span class="separator">•</span>WARNER<span class="separator">•</span>UNIVERSAL<span class="separator">®</span>VICE<span class="separator">©</span>DAZED<span class="separator">•</span>BOILER ROOM<span class="separator">™</span>PARIS FASHION WEEK<span class="separator">®</span>MOBOS<span class="separator">•</span>GRM DAILY<span class="separator">©</span>DMBA AWARDS<span class="separator">•</span>UNILEVER<span class="separator">™</span>REFRESCO<span class="separator">®</span>PERNOD RICARD<span class="separator">•</span>CHIVAS REGAL<span class="separator">©</span>HEINEKEN<span class="separator">•</span>ASTON MARTIN<span class="separator">™</span>UNIVERSAL STUDIOS<span class="separator">•</span>FAST & FURIOUS<span class="separator">®</span>IMPERIAL BRANDS<span class="separator">•</span>BLU<span class="separator">©</span>ZYN<span class="separator">•</span>SUBWAY<span class="separator">™</span>SKY SPORTS<span class="separator">®</span>SONY<span class="separator">•</span>WARNER<span class="separator">•</span>UNIVERSAL<span class="separator">®</span>VICE<span class="separator">©</span>DAZED<span class="separator">•</span>BOILER ROOM<span class="separator">™</span>PARIS FASHION WEEK<span class="separator">®</span>MOBOS<span class="separator">•</span>GRM DAILY<span class="separator">©</span>DMBA AWARDS<span class="separator">•</span>UNILEVER<span class="separator">™</span>REFRESCO<span class="separator">®</span>
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee-content" aria-hidden="true">
+      PERNOD RICARD<span class="separator">•</span>CHIVAS REGAL<span class="separator">©</span>HEINEKEN<span class="separator">•</span>ASTON MARTIN<span class="separator">™</span>UNIVERSAL STUDIOS<span class="separator">•</span>FAST & FURIOUS<span class="separator">®</span>IMPERIAL BRANDS<span class="separator">•</span>BLU<span class="separator">©</span>ZYN<span class="separator">•</span>SUBWAY<span class="separator">™</span>SKY SPORTS<span class="separator">®</span>SONY<span class="separator">•</span>WARNER<span class="separator">•</span>UNIVERSAL<span class="separator">®</span>VICE<span class="separator">©</span>DAZED<span class="separator">•</span>BOILER ROOM<span class="separator">™</span>PARIS FASHION WEEK<span class="separator">®</span>MOBOS<span class="separator">•</span>GRM DAILY<span class="separator">©</span>DMBA AWARDS<span class="separator">•</span>UNILEVER<span class="separator">™</span>REFRESCO<span class="separator">®</span>PERNOD RICARD<span class="separator">•</span>CHIVAS REGAL<span class="separator">©</span>HEINEKEN<span class="separator">•</span>ASTON MARTIN<span class="separator">™</span>UNIVERSAL STUDIOS<span class="separator">•</span>FAST & FURIOUS<span class="separator">®</span>IMPERIAL BRANDS<span class="separator">•</span>BLU<span class="separator">©</span>ZYN<span class="separator">•</span>SUBWAY<span class="separator">™</span>SKY SPORTS<span class="separator">®</span>SONY<span class="separator">•</span>WARNER<span class="separator">•</span>UNIVERSAL<span class="separator">®</span>VICE<span class="separator">©</span>DAZED<span class="separator">•</span>BOILER ROOM<span class="separator">™</span>PARIS FASHION WEEK<span class="separator">®</span>MOBOS<span class="separator">•</span>GRM DAILY<span class="separator">©</span>DMBA AWARDS<span class="separator">•</span>UNILEVER<span class="separator">™</span>REFRESCO<span class="separator">®</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BODY SECTION ==================== -->
+<section class="body-section">
+  <p class="serif-body body-text">
+    Lev Alexander<sup class="footnote">1</sup> is a London based consultant focusing on brand and product strategies<span class="symbol">©</span> with over 10 years of experience helping complex global brands<sup class="footnote">2</sup> make magic for everyday people<span class="symbol">™</span>.
+  </p>
+</section>
+
+<!-- ==================== OUTLINE DISPLAY ==================== -->
+<section class="outline-section">
+  <h2 class="display-outline outline-title">
+    LEV<br>ALEXANDER<span class="symbol">®</span>
+  </h2>
+</section>
+
+<!-- ==================== SERVICES THIN BAR ==================== -->
+<div class="thin-bar">
+  <div class="thin-bar-text">SERVICES</div>
+</div>
+
+<!-- ==================== SERVICES MARQUEE ==================== -->
+<div class="marquee-wrapper services-marquee">
+  <div class="marquee marquee-fast" data-speed="190">
+    <div class="marquee-content">
+      PRODUCT INNOVATION<span class="separator">/</span>STRATEGY<span class="separator">/</span>BRAND<span class="separator">/</span>CREATIVE CAMPAIGNS<span class="separator">/</span>ACTIVATION<span class="separator">/</span>PRODUCT INNOVATION<span class="separator">/</span>STRATEGY<span class="separator">/</span>BRAND<span class="separator">/</span>CREATIVE CAMPAIGNS<span class="separator">/</span>ACTIVATION<span class="separator">/</span>PRODUCT INNOVATION<span class="separator">/</span>STRATEGY<span class="separator">/</span>BRAND<span class="separator">/</span>CREATIVE CAMPAIGNS<span class="separator">/</span>ACTIVATION<span class="separator">/</span>PRODUCT INNOVATION<span class="separator">/</span>STRATEGY<span class="separator">/</span>BRAND<span class="separator">/</span>CREATIVE CAMPAIGNS<span class="separator">/</span>ACTIVATION<span class="separator">/</span>
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee-content" aria-hidden="true">
+      PRODUCT INNOVATION<span class="separator">/</span>STRATEGY<span class="separator">/</span>BRAND<span class="separator">/</span>CREATIVE CAMPAIGNS<span class="separator">/</span>ACTIVATION<span class="separator">/</span>PRODUCT INNOVATION<span class="separator">/</span>STRATEGY<span class="separator">/</span>BRAND<span class="separator">/</span>CREATIVE CAMPAIGNS<span class="separator">/</span>ACTIVATION<span class="separator">/</span>PRODUCT INNOVATION<span class="separator">/</span>STRATEGY<span class="separator">/</span>BRAND<span class="separator">/</span>CREATIVE CAMPAIGNS<span class="separator">/</span>ACTIVATION<span class="separator">/</span>PRODUCT INNOVATION<span class="separator">/</span>STRATEGY<span class="separator">/</span>BRAND<span class="separator">/</span>CREATIVE CAMPAIGNS<span class="separator">/</span>ACTIVATION<span class="separator">/</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-left">
+      <div class="legal-text">
+        REGISTERED IN THE UNITED KINGDOM<span class="symbol">®</span><br>
+        COMPANY NUMBER: 14816976<br>
+        <br>
+        THIS DOCUMENT CONSTITUTES A DIGITAL SPECIMEN<span class="symbol">©</span><br>
+        ALL RIGHTS RESERVED 2026<span class="symbol">™</span>
+      </div>
+
+      <a href="mailto:lev@lev-alexander.com" class="contact-link">lev@lev-alexander.com</a>
+    </div>
+
+    <div class="footer-right">
+      <div class="barcode-container">
+        <!-- Barcode SVG 1 -->
+        <svg class="barcode" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="0" width="2" height="60" fill="#000"/>
+          <rect x="6" y="0" width="1" height="60" fill="#000"/>
+          <rect x="9" y="0" width="3" height="60" fill="#000"/>
+          <rect x="14" y="0" width="1" height="60" fill="#000"/>
+          <rect x="17" y="0" width="2" height="60" fill="#000"/>
+          <rect x="21" y="0" width="1" height="60" fill="#000"/>
+          <rect x="24" y="0" width="4" height="60" fill="#000"/>
+          <rect x="30" y="0" width="2" height="60" fill="#000"/>
+          <rect x="34" y="0" width="1" height="60" fill="#000"/>
+          <rect x="37" y="0" width="3" height="60" fill="#000"/>
+          <rect x="42" y="0" width="2" height="60" fill="#000"/>
+          <rect x="46" y="0" width="1" height="60" fill="#000"/>
+          <rect x="49" y="0" width="2" height="60" fill="#000"/>
+          <rect x="53" y="0" width="4" height="60" fill="#000"/>
+          <rect x="59" y="0" width="1" height="60" fill="#000"/>
+          <rect x="62" y="0" width="3" height="60" fill="#000"/>
+          <rect x="67" y="0" width="2" height="60" fill="#000"/>
+          <rect x="71" y="0" width="1" height="60" fill="#000"/>
+          <rect x="74" y="0" width="4" height="60" fill="#000"/>
+          <rect x="80" y="0" width="2" height="60" fill="#000"/>
+          <rect x="84" y="0" width="1" height="60" fill="#000"/>
+          <rect x="87" y="0" width="3" height="60" fill="#000"/>
+          <rect x="92" y="0" width="1" height="60" fill="#000"/>
+          <rect x="95" y="0" width="2" height="60" fill="#000"/>
+          <rect x="99" y="0" width="4" height="60" fill="#000"/>
+          <rect x="105" y="0" width="1" height="60" fill="#000"/>
+          <rect x="108" y="0" width="3" height="60" fill="#000"/>
+          <rect x="113" y="0" width="2" height="60" fill="#000"/>
+          <rect x="117" y="0" width="1" height="60" fill="#000"/>
+          <text x="60" y="58" font-family="JetBrains Mono, monospace" font-size="6" text-anchor="middle" fill="#000">14816976</text>
+        </svg>
+
+        <!-- Barcode SVG 2 -->
+        <svg class="barcode" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="0" width="3" height="60" fill="#000"/>
+          <rect x="10" y="0" width="1" height="60" fill="#000"/>
+          <rect x="13" y="0" width="2" height="60" fill="#000"/>
+          <rect x="17" y="0" width="4" height="60" fill="#000"/>
+          <rect x="23" y="0" width="1" height="60" fill="#000"/>
+          <rect x="26" y="0" width="3" height="60" fill="#000"/>
+          <rect x="31" y="0" width="2" height="60" fill="#000"/>
+          <rect x="35" y="0" width="1" height="60" fill="#000"/>
+          <rect x="38" y="0" width="4" height="60" fill="#000"/>
+          <rect x="44" y="0" width="2" height="60" fill="#000"/>
+          <rect x="48" y="0" width="1" height="60" fill="#000"/>
+          <rect x="51" y="0" width="3" height="60" fill="#000"/>
+          <rect x="56" y="0" width="1" height="60" fill="#000"/>
+          <rect x="59" y="0" width="2" height="60" fill="#000"/>
+          <rect x="63" y="0" width="4" height="60" fill="#000"/>
+          <rect x="69" y="0" width="1" height="60" fill="#000"/>
+          <rect x="72" y="0" width="3" height="60" fill="#000"/>
+          <rect x="77" y="0" width="2" height="60" fill="#000"/>
+          <rect x="81" y="0" width="1" height="60" fill="#000"/>
+          <rect x="84" y="0" width="4" height="60" fill="#000"/>
+          <rect x="90" y="0" width="2" height="60" fill="#000"/>
+          <text x="50" y="58" font-family="JetBrains Mono, monospace" font-size="6" text-anchor="middle" fill="#000">LEV-2026</text>
+        </svg>
+      </div>
+
+      <div class="legal-text" style="text-align: right;">
+        SPECIMEN TYPE: PORTFOLIO<span class="symbol">™</span><br>
+        FORMAT: DIGITAL EDITORIAL<br>
+        CLASSIFICATION: BRAND STRATEGY
+      </div>
+    </div>
+  </div>
+
+  <div class="copyright">
+    © 2026 LEV ALEXANDER LIMITED<span class="symbol">™</span> — ALL RIGHTS RESERVED<span class="symbol">®</span> — DESIGNED IN LONDON<span class="symbol">©</span>
+  </div>
+</footer>
 
 <script>
-const glow = document.getElementById("glow")
-document.addEventListener("mousemove", e=>{
-  glow.style.transform = `translate(${e.clientX-150}px,${e.clientY-150}px)`
-})
+// Flashing symbols animation around LEV ALEXANDER text
+(function() {
+  const symbols = ['©', '®', '☺', '♫', '(¬`‸´¬)', '☆', '˙𐃷˙'];
+  const outlineSection = document.querySelector('.outline-section');
+
+  if (!outlineSection) return;
+
+  function createFlashSymbol() {
+    const symbol = document.createElement('div');
+    symbol.className = 'flash-symbol';
+    symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+    // Random position around the text
+    const sectionRect = outlineSection.getBoundingClientRect();
+    const titleRect = outlineSection.querySelector('.outline-title').getBoundingClientRect();
+
+    // Calculate relative position within the section
+    const relativeTop = titleRect.top - sectionRect.top;
+    const relativeLeft = titleRect.left - sectionRect.left;
+
+    // Random offset from center of title (creates scatter effect)
+    const offsetX = (Math.random() - 0.5) * titleRect.width * 1.5;
+    const offsetY = (Math.random() - 0.5) * titleRect.height * 1.5;
+
+    symbol.style.left = (relativeLeft + titleRect.width / 2 + offsetX) + 'px';
+    symbol.style.top = (relativeTop + titleRect.height / 2 + offsetY) + 'px';
+
+    outlineSection.appendChild(symbol);
+
+    // Remove after animation
+    setTimeout(() => {
+      symbol.remove();
+    }, 1000);
+  }
+
+  // Create flashing symbols at random intervals
+  function scheduleNextFlash() {
+    const delay = Math.random() * 400 + 100; // Random delay between 100-500ms
+    setTimeout(() => {
+      createFlashSymbol();
+      scheduleNextFlash();
+    }, delay);
+  }
+
+  // Start multiple sequences for overlapping effect
+  for (let i = 0; i < 3; i++) {
+    setTimeout(() => scheduleNextFlash(), i * 200);
+  }
+})();
+
+// Marquee sizing to ensure full scroll and consistent speed
+(function() {
+  const marquees = Array.from(document.querySelectorAll('.marquee'));
+  if (!marquees.length) return;
+
+  function setMarqueeVars() {
+    marquees.forEach((marquee) => {
+      const content = marquee.querySelector('.marquee-content');
+      if (!content) return;
+
+      const distance = content.getBoundingClientRect().width;
+      const speed = Number(marquee.dataset.speed || 150);
+      const duration = Math.max(distance / speed, 8);
+
+      marquee.style.setProperty('--scroll-distance', `${distance}px`);
+      marquee.style.setProperty('--scroll-duration', `${duration}s`);
+    });
+  }
+
+  window.addEventListener('load', setMarqueeVars);
+  window.addEventListener('resize', () => {
+    clearTimeout(window.__marqueeResizeTimer);
+    window.__marqueeResizeTimer = setTimeout(setMarqueeVars, 150);
+  });
+})();
 </script>
 
 </body>

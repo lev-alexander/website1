@@ -174,11 +174,13 @@ body {
 .marquee {
   display: flex;
   white-space: nowrap;
-  animation: scroll 16s linear infinite;
+  width: max-content;
+  will-change: transform;
+  animation: scroll var(--scroll-duration, 16s) linear infinite;
 }
 
 .marquee-fast {
-  animation: scrollFast 12s linear infinite;
+  animation: scroll var(--scroll-duration, 12s) linear infinite;
 }
 
 .marquee-content {
@@ -187,6 +189,7 @@ body {
   font-size: clamp(20px, 4vw, 48px);
   padding: 0 40px;
   display: inline-block;
+  flex: 0 0 auto;
 }
 
 .separator {
@@ -199,16 +202,7 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes scrollFast {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-1 * var(--scroll-distance, 50%)));
   }
 }
 
@@ -546,7 +540,7 @@ body {
 
 <!-- ==================== CLIENTS MARQUEE ==================== -->
 <div class="marquee-wrapper">
-  <div class="marquee">
+  <div class="marquee" data-speed="150">
     <div class="marquee-content">
       PERNOD RICARD<span class="separator">•</span>CHIVAS REGAL<span class="separator">©</span>HEINEKEN<span class="separator">•</span>ASTON MARTIN<span class="separator">™</span>UNIVERSAL STUDIOS<span class="separator">•</span>FAST & FURIOUS<span class="separator">®</span>IMPERIAL BRANDS<span class="separator">•</span>BLU<span class="separator">©</span>ZYN<span class="separator">•</span>SUBWAY<span class="separator">™</span>SKY SPORTS<span class="separator">®</span>SONY<span class="separator">•</span>WARNER<span class="separator">•</span>UNIVERSAL<span class="separator">®</span>VICE<span class="separator">©</span>DAZED<span class="separator">•</span>BOILER ROOM<span class="separator">™</span>PARIS FASHION WEEK<span class="separator">®</span>MOBOS<span class="separator">•</span>GRM DAILY<span class="separator">©</span>DMBA AWARDS<span class="separator">•</span>UNILEVER<span class="separator">™</span>REFRESCO<span class="separator">®</span>PERNOD RICARD<span class="separator">•</span>CHIVAS REGAL<span class="separator">©</span>HEINEKEN<span class="separator">•</span>ASTON MARTIN<span class="separator">™</span>UNIVERSAL STUDIOS<span class="separator">•</span>FAST & FURIOUS<span class="separator">®</span>IMPERIAL BRANDS<span class="separator">•</span>BLU<span class="separator">©</span>ZYN<span class="separator">•</span>SUBWAY<span class="separator">™</span>SKY SPORTS<span class="separator">®</span>SONY<span class="separator">•</span>WARNER<span class="separator">•</span>UNIVERSAL<span class="separator">®</span>VICE<span class="separator">©</span>DAZED<span class="separator">•</span>BOILER ROOM<span class="separator">™</span>PARIS FASHION WEEK<span class="separator">®</span>MOBOS<span class="separator">•</span>GRM DAILY<span class="separator">©</span>DMBA AWARDS<span class="separator">•</span>UNILEVER<span class="separator">™</span>REFRESCO<span class="separator">®</span>
     </div>
@@ -578,7 +572,7 @@ body {
 
 <!-- ==================== SERVICES MARQUEE ==================== -->
 <div class="marquee-wrapper services-marquee">
-  <div class="marquee marquee-fast">
+  <div class="marquee marquee-fast" data-speed="190">
     <div class="marquee-content">
       PRODUCT INNOVATION<span class="separator">/</span>STRATEGY<span class="separator">/</span>BRAND<span class="separator">/</span>CREATIVE CAMPAIGNS<span class="separator">/</span>ACTIVATION<span class="separator">/</span>PRODUCT INNOVATION<span class="separator">/</span>STRATEGY<span class="separator">/</span>BRAND<span class="separator">/</span>CREATIVE CAMPAIGNS<span class="separator">/</span>ACTIVATION<span class="separator">/</span>PRODUCT INNOVATION<span class="separator">/</span>STRATEGY<span class="separator">/</span>BRAND<span class="separator">/</span>CREATIVE CAMPAIGNS<span class="separator">/</span>ACTIVATION<span class="separator">/</span>PRODUCT INNOVATION<span class="separator">/</span>STRATEGY<span class="separator">/</span>BRAND<span class="separator">/</span>CREATIVE CAMPAIGNS<span class="separator">/</span>ACTIVATION<span class="separator">/</span>
     </div>
@@ -729,6 +723,32 @@ body {
   for (let i = 0; i < 3; i++) {
     setTimeout(() => scheduleNextFlash(), i * 200);
   }
+})();
+
+// Marquee sizing to ensure full scroll and consistent speed
+(function() {
+  const marquees = Array.from(document.querySelectorAll('.marquee'));
+  if (!marquees.length) return;
+
+  function setMarqueeVars() {
+    marquees.forEach((marquee) => {
+      const content = marquee.querySelector('.marquee-content');
+      if (!content) return;
+
+      const distance = content.getBoundingClientRect().width;
+      const speed = Number(marquee.dataset.speed || 150);
+      const duration = Math.max(distance / speed, 8);
+
+      marquee.style.setProperty('--scroll-distance', `${distance}px`);
+      marquee.style.setProperty('--scroll-duration', `${duration}s`);
+    });
+  }
+
+  window.addEventListener('load', setMarqueeVars);
+  window.addEventListener('resize', () => {
+    clearTimeout(window.__marqueeResizeTimer);
+    window.__marqueeResizeTimer = setTimeout(setMarqueeVars, 150);
+  });
 })();
 </script>
 

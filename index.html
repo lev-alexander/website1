@@ -226,6 +226,218 @@ body {
   opacity: 1;
 }
 
+/* ==================== WORK BUTTON ==================== */
+.work-cta {
+  display: flex;
+  justify-content: center;
+  margin: -60px auto 120px;
+  padding: 0 40px;
+}
+
+.work-button {
+  background: #000000;
+  color: #FFFFFF;
+  border: 2px solid #000000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 2px;
+  padding: 14px 32px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0 #000000;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+  animation: work-vibe 4.2s infinite;
+}
+
+.work-button:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0 #000000;
+}
+
+.work-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000000;
+}
+
+@keyframes work-vibe {
+  0%, 90% { transform: translate(0, 0) rotate(0deg); }
+  92% { transform: translate(1px, -1px) rotate(0.3deg); }
+  94% { transform: translate(-1px, 1px) rotate(-0.3deg); }
+  96% { transform: translate(1px, 1px) rotate(0.2deg); }
+  98% { transform: translate(-1px, -1px) rotate(-0.2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* ==================== WORK WINDOW ==================== */
+.work-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 200;
+}
+
+.work-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.work-window {
+  width: 70vw;
+  height: 70vh;
+  max-width: 1100px;
+  min-width: 280px;
+  background: #C0C0C0;
+  border: 2px solid #000000;
+  box-shadow: 10px 10px 0 #000000;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.work-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #000000;
+  color: #FFFFFF;
+  padding: 6px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 1px;
+  font-size: 12px;
+  border-bottom: 2px solid #000000;
+}
+
+.work-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.work-close {
+  background: #C0C0C0;
+  border: 2px solid #000000;
+  width: 24px;
+  height: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.work-close:hover {
+  background: #FFFFFF;
+}
+
+.work-content {
+  flex: 1;
+  overflow: hidden;
+  background: #EFEFEF;
+  border-top: 2px solid #FFFFFF;
+  border-left: 2px solid #FFFFFF;
+  border-right: 2px solid #7A7A7A;
+  border-bottom: 2px solid #7A7A7A;
+}
+
+.work-feed {
+  height: 100%;
+  overflow-y: auto;
+  padding: 24px;
+  display: grid;
+  gap: 22px;
+}
+
+.work-item {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0 #000000;
+  padding: 16px;
+}
+
+.work-item summary {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  gap: 14px;
+}
+
+.work-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.work-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.work-title-text {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(20px, 3vw, 32px);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.work-expand {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid #000000;
+  padding: 6px 10px;
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.work-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border: 2px solid #000000;
+}
+
+.work-body {
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.work-body p {
+  margin-bottom: 12px;
+}
+
+.work-body p:last-child {
+  margin-bottom: 0;
+}
+
+.work-body a {
+  color: #000000;
+  text-decoration: underline;
+  word-break: break-word;
+}
+
+body.work-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .work-window {
+    width: 90vw;
+    height: 75vh;
+  }
+
+  .work-cta {
+    margin: -40px auto 90px;
+  }
+}
+
 /* ==================== OUTLINE SECTION ==================== */
 .outline-section {
   text-align: center;
@@ -430,6 +642,10 @@ body {
   .body-section {
     padding: 0 24px;
   }
+
+  .work-feed {
+    padding: 18px;
+  }
 }
 </style>
 </head>
@@ -557,6 +773,231 @@ body {
     Lev Alexander<sup class="footnote">1</sup> is a London based consultant focusing on brand and product strategies<span class="symbol">©</span> with over 10 years of experience helping complex global brands<sup class="footnote">2</sup> make magic for everyday people<span class="symbol">™</span>.
   </p>
 </section>
+
+<div class="work-cta">
+  <button class="work-button" id="workButton" type="button">WORK</button>
+</div>
+
+<div class="work-overlay" id="workOverlay" aria-hidden="true">
+  <div class="work-window" role="dialog" aria-modal="true" aria-labelledby="workTitle">
+    <div class="work-titlebar">
+      <div class="work-title" id="workTitle">PROJECTS.EXE</div>
+      <button class="work-close" id="workClose" type="button" aria-label="Close work window">X</button>
+    </div>
+    <div class="work-content">
+      <div class="work-feed">
+        <details class="work-item">
+          <summary>
+            <img class="work-image" src="assets/work/project-01.jpeg" alt="Chivas Regal Pioneers (Japan)">
+            <div class="work-item-header">
+              <div class="work-title-text">Chivas Regal Pioneers (Japan)</div>
+              <span class="work-expand">Expand</span>
+            </div>
+          </summary>
+          <div class="work-body">
+            <p>Pioneers was a product of love and experimentation which, joyfully bittersweet, was my last project at Chivas Regal. This was the launch of a content platform to create stories around business and entrepreneurship from around the world. The launch was in Japan, headlined by Actress and Model Eliza Ikdea (2M IG) and featured two entrepreneurs from her close circle: Keisuke Shoda (Homeware Designer) and Keisuke Fujita (Owner of Four Eyed Tokyo).</p>
+            <p>We really wanted to make this platform truly educational and to reimagine Chivas as the business whisky but for the future. We did so with cultural innovators on the ground in Tokyo by hosting workshops open to the public and the recorded them for online content.</p>
+            <p>This content was a part of a wider Reels and short form strategy I helped write and produce with agency MediaMonks. We partnered with the local Japan Market on this project to facilitate their sales and consumer acquisition targets, and it was a joy to immerse myself in Japanese culture while managing this project.</p>
+            <p>You can see more of the project, as well as watch all the content here.</p>
+            <p><a href="https://www.youtube.com/watch?v=Dj66h5abCwA" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=Dj66h5abCwA</a></p>
+            <p><a href="https://www.youtube.com/watch?v=kX8_-7WQAoc&amp;list=PLJMwI-i0H-lCYyhBdnJzb0UzBc_9pjjOf" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=kX8_-7WQAoc&amp;list=PLJMwI-i0H-lCYyhBdnJzb0UzBc_9pjjOf</a></p>
+          </div>
+        </details>
+
+        <details class="work-item">
+          <summary>
+            <img class="work-image" src="assets/work/project-02.png" alt="Altered Brand Identity">
+            <div class="work-item-header">
+              <div class="work-title-text">Altered Brand Identity</div>
+              <span class="work-expand">Expand</span>
+            </div>
+          </summary>
+          <div class="work-body">
+            <p>I launched a brand this year, Altered, a new RTD 0% Spritz with mood changing botanicals, it mimics the buzz of booze with zero hangover. A "Mood Elixir".</p>
+            <p>Seize Tomorrow is the main platform of the brand, a way to recognise the potential in all of us if we look after the future, not leaving it for "future me to sort out" but to put you in the best frame of mind so every morning is incredible.</p>
+            <p>The name Altered comes from wanting to show that there are other ways to alter states of mind without alcohol. I want to push this concept further in the future by developing campaigns and content around this idea.</p>
+            <p>This was an incredibly fun project to take on as I started to adjust into more mindful drinking, I couldn't find a single fun brand for me to drink out there so in my spare time I made one from scratch. Creating the recipes, designing the branding, identity, packaging. It was truly a labour of love.</p>
+            <p>I took the final bottles (there's two, one to wake you up and one to relax you) to a few bars in London and they became instant hits with customers. You can currently find it stocked at: 10 Cases, Parsons, The Hawk's Nest, Skylarking.</p>
+            <p>I'll be developing this brand further so stay tuned.</p>
+          </div>
+        </details>
+
+        <details class="work-item">
+          <summary>
+            <img class="work-image" src="assets/work/project-03.jpeg" alt="Chivas Residency Fund">
+            <div class="work-item-header">
+              <div class="work-title-text">Chivas Residency Fund</div>
+              <span class="work-expand">Expand</span>
+            </div>
+          </summary>
+          <div class="work-body">
+            <p>Last year I hit a huge problem, I had 10 emails a week from artists who had amazing projects in the works, and they wanted Chivas to get involved, but my big challenge was brand return for smaller initiatives.</p>
+            <p>So I came up with the Chivas Residency. A music fund for up-and-coming artists around the world. We support their creativity and in return we tell their stories to the global Chivas audience.</p>
+            <p>A win-win for everyone. Excerpt from Chivas website:</p>
+            <p>"The Chivas Residency is here to put the spotlight on a collection of talented artists from around the world.</p>
+            <p>Spanning a range of genres - from grime to reggaeton - the programme funds grassroots music projects and provides a global platform to help our artists reach the top. With each artist embodying the I Rise, We Rise mantra, they've been busy creating bold new music and forging their own paths in the industry. Discover the incredible music videos and tune into their inspirational stories now."</p>
+            <p>This was a three continent music project with four film crews, community at its heart. Below are the interviews from each artist about why they do what they do, which was a joy to platform and turn into a brand story for Chivas:</p>
+            <p>Agencies: Independent Culture, Firmative Media</p>
+          </div>
+        </details>
+
+        <details class="work-item">
+          <summary>
+            <img class="work-image" src="assets/work/project-04.jpeg" alt="Chivas x Headie One + 14 others">
+            <div class="work-item-header">
+              <div class="work-title-text">Chivas x Headie One + 14 others</div>
+              <span class="work-expand">Expand</span>
+            </div>
+          </summary>
+          <div class="work-body">
+            <p>There are too many product placements I worked on to add onto this list, from movies, to film, to music videos. I regularly worked with Hollywood agencies, Sony, Warner, Universal, Boiler Room, and independents to find new opportunities to support culture at every level.</p>
+            <p>Working with huge cultural talent agencies and producers is a delight, because the brand gets to travel to the creative world developed by the artist. It's a play in fantasy that more brands should be exploring, and to be able to support the artist is the best outcome possible.</p>
+            <p>I would sit down the label or talent and write in where the brand should show up in their world. Authentically or playfully, there is a correct answer.</p>
+            <p>But doing so without the respect for community or culture is a tricky slope that goes downhill very fast. There's a reason this is called a "Partnership".</p>
+            <p>Headie One</p>
+            <p>The first ever global music video partnership for Chivas Regal, done with Headie One. I managed the relationship, creative treatment, and delivery of global assets.</p>
+            <p>Headie now works regularly with the brand thanks to a fantastic launch.</p>
+            <p>Here are a few of the other partnerships I helped facilitate:</p>
+            <p>(You may have to follow the link on YouTube if it's age gated)</p>
+            <p><a href="https://www.youtube.com/watch?v=Qp3c6yqn93I" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=Qp3c6yqn93I</a></p>
+            <p><a href="https://www.youtube.com/watch?v=Naz1nLu8N6I" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=Naz1nLu8N6I</a></p>
+            <p><a href="https://www.youtube.com/watch?v=aBs_Ff3jijE" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=aBs_Ff3jijE</a></p>
+            <p><a href="https://www.youtube.com/watch?v=uBhgIdlmzGE" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=uBhgIdlmzGE</a></p>
+          </div>
+        </details>
+
+        <details class="work-item">
+          <summary>
+            <img class="work-image" src="assets/work/project-05.png" alt="Chivas x Stefflon Don">
+            <div class="work-item-header">
+              <div class="work-title-text">Chivas x Stefflon Don</div>
+              <span class="work-expand">Expand</span>
+            </div>
+          </summary>
+          <div class="work-body">
+            <p>I worked with Stefflon Don's team on multiple music videos over a year which then resulted in a Limited Edition bottle. A huge partnership to support her growth as an artist and to cement Chivas in her success story. The result is some fantastic best-in-industry product placements in stunning videos. (4M Instagram, 6M Spotify).</p>
+            <p>We wrote the scripts together and found authentic moments for the brand to show up. I flew to Jamaica to be on-set for the videos to work with the directors on the best possible treatment of the brand. The results are fun and stylish.</p>
+            <p>Working with an artist like Stefflon Don is a dream, the creative treatments are always so bold and hold attitude. Integrating a brand like Chivas into this universe is very exciting challenge. These are the three music videos I delivered along side some stunning photography used by the brand and talent.</p>
+            <p>The team were fortunate enough to take on the partnership to new heights and launch a Limited Edition bottle co-created by Stefflon Don. It's always lovely to see a partnership go through from placement to content to bottle to shelf. A true partnership in every sense of the word.</p>
+            <p><a href="https://www.youtube.com/watch?v=Vg3oJRjHmPc" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=Vg3oJRjHmPc</a></p>
+            <p><a href="https://www.youtube.com/watch?v=aYGS6uEJv7c" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=aYGS6uEJv7c</a></p>
+            <p><a href="https://www.youtube.com/watch?v=P8y54bAG9eI" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=P8y54bAG9eI</a></p>
+          </div>
+        </details>
+
+        <details class="work-item">
+          <summary>
+            <img class="work-image" src="assets/work/project-06.jpeg" alt="Chivas Hi-Balls Brand World">
+            <div class="work-item-header">
+              <div class="work-title-text">Chivas Hi-Balls Brand World</div>
+              <span class="work-expand">Expand</span>
+            </div>
+          </summary>
+          <div class="work-body">
+            <p>Working with agency Impero, I oversaw the Chivas Hiball brand world for the lead serve for the brand. I was tasked to bring youthful energy into the serve and to identify a drinking occasion for this entry point into the brand.</p>
+            <p>We decided to run fast with the Japanese highball culture and fused Scottish cues with Japanese street maximalist graphics which resulted in OOH, digital, and POS executions around the world, including a pimped up Japanese highball machine covered in fun and outrageous stickers to be used at consumer trial events.</p>
+            <p>The drinking occasion was a very conscious effort of research and subversive direction for this old Scottish brand. We wanted to break free whisky stereotypes by having the serve glassware be a tankard, similar to how highballs are drunk in Japan, and let consumers choose how they remix their whisky. Freedom and fun.</p>
+            <p>The brand world was later turned into a VAP LE, the first time the brand had dipped their toe into more youthful packaging through the brand world I oversaw. The entire project resulted in a brand world for the lead serve used by Markets around the world and in particular Asia.</p>
+            <p>Chivas x Soda x Ice = Whisky Remixed.</p>
+            <p>Agency: Impero. Image Cred: Cristina Corredor.</p>
+          </div>
+        </details>
+
+        <details class="work-item">
+          <summary>
+            <img class="work-image" src="assets/work/project-07.jpeg" alt="Chivas POS Development">
+            <div class="work-item-header">
+              <div class="work-title-text">Chivas POS Development</div>
+              <span class="work-expand">Expand</span>
+            </div>
+          </summary>
+          <div class="work-body">
+            <p>I directly managed all the new Point of Sale (merchandise) developments for the Chivas Regal brand.</p>
+            <p>Front and centre at most luxury venues around the world you'll find Chivas neons, ice buckets, or bottle displays which I developed.</p>
+            <p>Working closely with the procurement team to negotiate with suppliers, discover new innovations in materials and production techniques, making sure everything we produce is ethical and sustainable.</p>
+            <p>Who knew you could get so nerdy about glassware? For the brand I produced a range of glassware from tankards, to premium cocktail glasses, to innovative glass serving rituals.</p>
+          </div>
+        </details>
+
+        <details class="work-item">
+          <summary>
+            <img class="work-image" src="assets/work/project-08.jpeg" alt="Chivas Masters Global">
+            <div class="work-item-header">
+              <div class="work-title-text">Chivas Masters Global</div>
+              <span class="work-expand">Expand</span>
+            </div>
+          </summary>
+          <div class="work-body">
+            <p>How do you excite the best bartenders in the world about a 200+ year old brand? You showcase their innovation and creativity on a world stage with luxury settings, camera crews, and healthy competition. I managed this adrenaline packed global final.</p>
+            <p>Over 1,000 bartenders applied and competed in local finals around the world from 14 countries in every continent. We flew the 14 Global Finalists to Scotland, the home of Chivas. After a luxury castle stay, highland foraging, cask tasting, and brand education, it was time for the real stuff. Each bartender would have to compete in 3 challenges - make a cocktail based on a brief given that day. These drinks were representations of the boldest innovations in cocktail making from around the world.</p>
+            <p>To decide the global winner we had the help of world-class judges.</p>
+            <p>Alastair Burgess - director of award-winning bar Happiness Forgets - which has been one of the World's 50 Best Bars for seven years - who prides himself on simple, delicious cocktails.</p>
+            <p>Marcis Dzelezainis - award-winning bartender who has experimented with carbonation for his venue Fare Bar + Canteen, which features an extensive list of on-tap drinks. Monica Berg - recent winner of International Bartender of the Year who runs P(our) Symposium, which aims to explore experimental bartending ideas with a focus on hospitality.</p>
+            <p>Three finalists were selected from the group. They got to chose their teams from remaining bartenders, were given a budget and a designer, and had to come up with and create a pop-up bar open to the public in less than 24 hours. Apprentice style.</p>
+            <p>Each bar concept had to have a theme, story, and 3 delicious drinks. The event was a sold out public party in London, and the winner was voted by the public. On the day I was project managing the event and directing 5 cameras, but being able to taste these drinks was all worth it!</p>
+            <p>Seb from The Netherlands won but that was just the start of the story.</p>
+            <p>I flew the winning team led by Seb to Shanghai. Chivas was sponsoring the DMBA Awards (like the Oscars for the drinks industry) and we needed to build a pop-up bar for thousands of award guests. No problem, using local agencies and my winning bartenders, we built their winning concept bar at the event and served up some delicious drinks.</p>
+            <p>The Chivas Masters was recognised as best in class for bartender advocacy and past winners and finalists pride in their participation. It was a joy to deliver the 2019 iteration of this great program.</p>
+          </div>
+        </details>
+
+        <details class="work-item">
+          <summary>
+            <img class="work-image" src="assets/work/project-09.jpeg" alt="Aston Martin">
+            <div class="work-item-header">
+              <div class="work-title-text">Aston Martin</div>
+              <span class="work-expand">Expand</span>
+            </div>
+          </summary>
+          <div class="work-body">
+            <p>The highlight of my time at Prism Sports + Entertainment was writing an Aston Martin ad. Something ad students dream about.</p>
+            <p>The goal was to prove that Astons are "Beautiful To Drive" (on a budget), while hero'ing each car on sale now. I wrote and designed a unique brand world for each Aston on sale at the time; the DB11, Vantage, and DBS.</p>
+            <p>I rewrote the cars as The Gentleman, The Hunter, and The Rogue.</p>
+            <p>The Hunter. The design of this sports focused Aston was inspired by predatory animals, so I pictured the Vantage as a hunter in the woods. Claiming the forest as its territory to hunt and play. We found a stunning racetrack in the middle of the woods with sharp angular bends. Cameras were positioned behind trees almost as if we are hiding from The Hunter.</p>
+            <p>The DBS, or The Rogue in my words, is one of the more unusual editions. I pictured him as the opposite to Bond. Secretive, dark, ominous. I wanted this world to be The Rogue's training grounds, before heading off to a mission. We chose a huge warehouse where we could attach light sticks to the column to give more sense of speed and otherworldly training. An almost extraterrestrial addition to the Aston family.</p>
+            <p>This is the Bond car, the DB11. It had to be called The Gentleman in my script. I wanted to give the DB11 a regal feel, authority, and space - but I wanted to add some tension. I pictured The Gentleman as the captain of a ship, traveling through troubled seas, on route for conquest and battle. We had the DB11 glide through country lanes and a Manor House estate. This is the bond car, but with a little atmospheric suspense.</p>
+            <p>I wrote the script and was the on-set art director for the shoot. The result was one of the best performing YouTube content (5m+) and photography used by dealership, promotional materials, books and more.</p>
+            <p>Agency: Prism S&amp;E (WPP)</p>
+            <p><a href="https://www.youtube.com/watch?v=32hVnBbeehA" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=32hVnBbeehA</a></p>
+          </div>
+        </details>
+
+        <details class="work-item">
+          <summary>
+            <img class="work-image" src="assets/work/project-10.png" alt="Apollo Tyres x Manchester United">
+            <div class="work-item-header">
+              <div class="work-title-text">Apollo Tyres x Manchester United</div>
+              <span class="work-expand">Expand</span>
+            </div>
+          </summary>
+          <div class="work-body">
+            <p>You guessed it, another motor brand. I promise I recycle.</p>
+            <p>Apollo Tyres wanted to celebrate their partnership with Manchester United, an unlikely area of creativity. I was asked to write, direct, and produce this ad, in less than 2 weeks and with a tiny budget.</p>
+            <p>For someone who didn't drive and knew nothing about football, it took everything inside me to do this, but the challenge was awesome.</p>
+            <p>The film and images were used across Manchester United events.</p>
+          </div>
+        </details>
+
+        <details class="work-item">
+          <summary>
+            <img class="work-image" src="assets/work/project-11.png" alt="Fast &amp; Furious (Universal Studios)">
+            <div class="work-item-header">
+              <div class="work-title-text">Fast &amp; Furious (Universal Studios)</div>
+              <span class="work-expand">Expand</span>
+            </div>
+          </summary>
+          <div class="work-body">
+            <p>An exciting client of mine was Universal Studios and their Fast &amp; Furious franchise.</p>
+            <p>The studio were launching Fast &amp; Furious Live, a show which premiered at the London O2 Arena with Vin Diesel himself opening.</p>
+            <p>I helped coordinate all the PR strategy for the launch, wrote press releases, hosted journos, the works. I was also directly creating and designing branded assets for their website. (Hey, when you work for a nimble agency you end up doing everything!).</p>
+            <p>The shows were selling out across Europe and we generated over 2.3bn PR reach.</p>
+            <p>(A side note for this, I also co-wrote a script that went into the live show. So my words got into the biggest movie franchise in the world. Take that GCSE English teacher).</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ==================== OUTLINE DISPLAY ==================== -->
 <section class="outline-section">
@@ -748,6 +1189,40 @@ body {
   window.addEventListener('resize', () => {
     clearTimeout(window.__marqueeResizeTimer);
     window.__marqueeResizeTimer = setTimeout(setMarqueeVars, 150);
+  });
+})();
+
+// Work window interactions
+(function() {
+  const workButton = document.getElementById('workButton');
+  const workOverlay = document.getElementById('workOverlay');
+  const workClose = document.getElementById('workClose');
+
+  if (!workButton || !workOverlay || !workClose) return;
+
+  const openWork = () => {
+    workOverlay.classList.add('is-open');
+    workOverlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('work-modal-open');
+  };
+
+  const closeWork = () => {
+    workOverlay.classList.remove('is-open');
+    workOverlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('work-modal-open');
+  };
+
+  workButton.addEventListener('click', openWork);
+  workClose.addEventListener('click', closeWork);
+  workOverlay.addEventListener('click', (event) => {
+    if (event.target === workOverlay) {
+      closeWork();
+    }
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && workOverlay.classList.contains('is-open')) {
+      closeWork();
+    }
   });
 })();
 </script>
